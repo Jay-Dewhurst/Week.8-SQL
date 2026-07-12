@@ -40,13 +40,14 @@ app.get("/:id", async (req, res) => {
 // Route to update a category
 app.put("/:id", async (req, res) => {
   try {
-    const { name } = req.body;
-    const post = await Category.update(
-      { name },
+    const { category_name } = req.body; /* Changed deconstructed variable value */
+    const category = await Category.update( /* Changed variable name */
+      { category_name }, /* Changed update deconstructed value */
       { where: { id: req.params.id } }
     );
-    res.json(post);
+    res.json(category); /* Changed resolve name */
   } catch (error) {
+    console.log("Error updating category:", error); /* Added log function to fix error reporting to terminal */
     res.status(500).json({ error: "Error updating category" });
   }
 });
