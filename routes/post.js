@@ -12,6 +12,7 @@ app.post("/", async (req, res) => {
 
     res.status(201).json(post);
   } catch (error) {
+    console.log("Error adding post:", error); /* Added log line so it outputs to terminal */
     res.status(500).json({ error: "Error adding post" });
   }
 });
@@ -23,6 +24,7 @@ app.get("/", async (req, res) => {
 
     res.json(posts);
   } catch (error) {
+    console.log("Error retrieving posts:", error); /* Added log line so it outputs to terminal */
     res.status(500).json({ error: "Error retrieving posts", error });
   }
 });
@@ -32,6 +34,7 @@ app.get("/:id", async (req, res) => {
     const post = await Post.findByPk(req.params.id);
     res.json(post);
   } catch (error) {
+    console.log("Error retrieving post:", error); /* Added log line so it outputs to terminal */
     res.status(500).json({ error: "Error retrieving post" });
   }
 });
@@ -46,6 +49,7 @@ app.put("/:id", async (req, res) => {
     );
     res.json(post);
   } catch (error) {
+    console.log("Error updating post:", error); /* Added log line so it outputs to terminal */
     res.status(500).json({ error: "Error updating post" });
   }
 });
@@ -56,6 +60,7 @@ app.delete("/:id", async (req, res) => {
     const post = await Post.destroy({ where: { id: req.params.id } });
     res.json(post);
   } catch (error) {
+    console.log("Error deleting post:", error); /* Added log line so it outputs to terminal */
     res.status(500).json({ error: "Error deleting post" });
   }
 });
