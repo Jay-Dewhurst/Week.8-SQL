@@ -4,19 +4,19 @@ const app = require("express").Router();
 // import the models
 const { Category } = require("../models/index");
 
-// Route to add a new post
+// Route to add a new category
 app.post("/", async (req, res) => {
   try {
-    const { category_name } = req.body;
-    const category = await Category.create({ category_name });
+    const { category_name } = req.body; /* Changed deconstructed variable value */
+    const category = await Category.create({ category_name }); /* Changed variable name/deconstructed value */
     res.status(201).json(category);
   } catch (error) {
-    console.log(error);
+    console.log("Error adding category:", error); /* Added log function to fix error reporting to terminal */
     res.status(500).json({ message: "Error adding category", error: error });
   }
 });
 
-// Route to get all posts
+// Route to get all categories
 app.get("/", async (req, res) => {
   try {
     console.log("Getting all categories");
@@ -24,15 +24,17 @@ app.get("/", async (req, res) => {
     console.log(categories);
     res.json(categories);
   } catch (error) {
+    console.log("Error retrieving categories:", error); /* Added log function to fix error reporting to terminal */
     res.status(500).json({ message: "Error adding categories", error: error });
   }
 });
 
 app.get("/:id", async (req, res) => {
   try {
-    const category = await Post.findByPk(req.params.id);
+    const category = await Category.findByPk(req.params.id); /* Changed post to category to fix a reference error */
     res.json(category);
   } catch (error) {
+    console.log("Error retrieving category:", error); /* Added log function to fix error reporting to terminal */
     res.status(500).json({ error: "Error retrieving category" });
   }
 });
@@ -58,6 +60,7 @@ app.delete("/:id", async (req, res) => { /* Fixed route typo (double slash retur
     const category = await Category.destroy({ where: { id: req.params.id } });
     res.json(category);
   } catch (error) {
+    console.log("Error deleting category:", error); /* Added log function to fix error reporting to terminal */
     res.status(500).json({ error: "Error deleting category" });
   }
 });
