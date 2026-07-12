@@ -51,8 +51,8 @@ app.put("/:id", async (req, res) => {
   }
 });
 
-// Route to delete a category
-app.delete("//:id", async (req, res) => {
+// Route to delete a category by its id
+app.delete("/:id", async (req, res) => { /* Fixed route typo (double slash returns an error) */
   try {
     const category = await Category.destroy({ where: { id: req.params.id } });
     res.json(category);
