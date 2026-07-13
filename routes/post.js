@@ -38,6 +38,18 @@ app.get("/", async (req, res) => {
   }
 });
 
+// Route to get all posts within a specific category
+app.get("/category/:categoryId", async (req, res) => {
+    try {
+        const posts = await Post.findAll({ where: { categoryId: req.params.categoryId },
+        });
+        res.json(posts);
+    } catch (error) {
+      console.log("Error retrieving posts by category:", error);
+      res.status(500).json({ error: "Error retrieving posts by category" });
+    }
+});
+
 app.get("/:id", async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id);
