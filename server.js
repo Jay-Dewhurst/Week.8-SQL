@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Handle GET request at the root route
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.htm"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Add routes
