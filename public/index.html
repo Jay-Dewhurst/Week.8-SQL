@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo-Tech Interface</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<main>
+    <section class="top-bar">
+        <div class="nav-wrapper">
+            <nav class="navbar themed-panel">
+                <a href="/" class="logo" id="logo-slot"></a>
+                <a href="#home">Call Us</a>
+                <a href="#home">Email Us</a>
+            </nav>
+        </div>
+        <hr class="hr-top">
+    </section>
+    <section class="main-container">
+        <div class="register-column">
+            <div class="register-container">
+                <div class="flex-box themed-panel">
+                    <div id="register-view">
+                        <h2>Register Here</h2>
+                            <form id="register-form">
+                                <div class="form-container">
+                                    <hr class="hr-register">
+                                <label for="register-email">Email:</label>
+                                    <input type="text" id="register-email" name="email" placeholder="Enter Email.."  required>
+                                <label for="register-password">Password:</label>
+                                    <input type="password" id="register-password" name="psw" placeholder="Enter Password.."  required>
+                                <label for="register-password-repeat">Repeat Password:</label>
+                                    <input type="password" id="register-password-repeat" name="psw-repeat" placeholder="Repeat Password.."  required>
+                                <label>
+                                    <input type="checkbox" checked="checked" name="remember">Remember me
+                                </label>
+                                    <p>By creating an account you agree to our Terms & Privacy</p>
+                                    <p id="register-message"></p>
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn" id="register-cancel-btn">Cancel</button>
+                                    <button type="submit" class="signupbtn">Sign Up</button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="logged-in-view" class="hidden">
+                            <p>Welcome, <span id="welcome-username"></span>!</p>
+                            <button type="button" id="logout-btn">Logout</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle-container">
+            <div class="flex-box themed-panel welcome-panel">
+                <h1>Welcome to Athena Systems</h1>
+                    <p>Deploying a new feature of our companies infastructure offering our customers a way to list their tasks, 
+                       and saves notes for the employees to read and listen to our views.</p>
+                    <p>We have added two new sections for you to enjoy -:
+                    <br>
+                       Task Journal & Save Notes, the Task Journal is for your own
+                       tasks to do while visiting the site and the Save Notes version is for leaving notes for us to read after you
+                       leave the site.
+                    </p>
+            </div>
+            <div class="parallel-post-container">
+                <div class="flex-box themed-panel" id="posts-container">
+                    <h2>Create a Post</h2>
+                    <form id="create-post-form" class="post-form">
+                        <label for="post-title">Title:</label>
+                            <input type="text" id="post-title" name="title" placeholder="Enter a Title.." required>
+                        <label for="post-category">Category:</label>
+                            <select id="post-category" name="categoryid" required>
+                                <option value="">Select a category</option>
+                            </select>
+                        <label for="post-content">Content:</label>
+                        <textarea id="post-content" name="content" rows="6" placeholder="Write your Post.."></textarea>
+                        <button type="submit" id="submit-postbtn">Publish Post</button>
+                    </form>
+                </div>
+                <div class="flex-box themed-panel" id="my-posts-container">
+                    <h2>My Posts</h2>
+                    <ul id="my-posts-lists">
+                    <!-- Posts will be inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="flex-box themed-panel">
+                <div id="login-view">
+                    <form id="login-form">
+                        <div class="container">
+                            <label for="login-username"><b>Username</b></label>
+                                <input type="text" id="login-username" name="uname" placeholder="Enter Username"  required>
+                            <label for="login-password"><b>Password</b></label>
+                                <input type="password" id="login-password" name="psw" placeholder="Enter Password"  required>
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember">Remember me
+                            </label>
+                                <p id="login-message"></p>
+                            <button type="submit" class="loginbtn">Login</button>
+                        </div>
+                        <div class="container">
+                            <span class="psw">Forgot <a href="#">password?</a></span>
+                            <button type="button" class="cancelbtn" id="login-cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="hr-sidebar">
+            <div class="content-row dashboard-grid">
+                <div class="flex-box themed-panel column-panel">
+                    <h2 class="Task-header">Save Notes</h2>
+                    <div class="input-group">
+                        <input type="text" id="noteInput" placeholder="Enter content...">
+                        <span onclick="newNote()" class="addBtn">Save</span>
+                    </div>
+                    <ul id="noteUL">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section>
+        <div class="content-row">
+            <div class="flex-box themed-panel" id="systems">
+                <p>All rights reserved. &copy; Jason Dewhurst 2026</p>
+            </div>
+        </div>
+    </section>
+</main>
+    <script src="logo.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
