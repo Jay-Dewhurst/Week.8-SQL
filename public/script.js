@@ -77,7 +77,8 @@ function showLoggedInView(user) {
     document.getElementById("logged-in-view").classList.remove("hidden");
     document.getElementById("welcome-username").textContent = user.username;
 
-    document.getElementById("login-view").classList.add("hidden");
+    document.getElementById("login-panel").classList.add("hidden");
+    document.querySelector(".hr-sidebar")?.classList.add("hidden");
 }
 
 // CHECKING LOGIN STATUS
@@ -96,7 +97,8 @@ logoutBtn.addEventListener("click", function () {
 
     document.getElementById("logged-in-view").classList.add("hidden");
     document.getElementById("register-view").classList.remove("hidden");
-    document.getElementById("login-view").classList.remove("hidden");
+    document.getElementById("login-panel").classList.remove("hidden");
+    document.querySelector(".hr-sidebar")?.classList.remove("hidden");
     document.getElementById("welcome-username").textContent = "";
 });
 
@@ -328,3 +330,13 @@ const browseCategorySelect = document.getElementById("browse-category-select");
 browseCategorySelect.addEventListener("change", function () {
     loadBrowsePosts(browseCategorySelect.value);
 });
+
+// LIVE CLOCK
+function updateClock() {
+    const clockElement = document.getElementById("live-clock");
+    const now = new Date();
+    clockElement.textContent = now.toLocaleTimeString();
+}
+
+setInterval(updateClock, 1000);
+updateClock();
