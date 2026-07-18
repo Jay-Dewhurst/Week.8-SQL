@@ -79,6 +79,8 @@ function showLoggedInView(user) {
 
     document.getElementById("login-panel").classList.add("hidden");
     document.querySelector(".hr-sidebar")?.classList.add("hidden");
+    document.getElementById("posts-container").classList.remove("hidden");
+    document.getElementById("my-posts-container").classList.remove("hidden");
 }
 
 // CHECKING LOGIN STATUS
@@ -98,6 +100,8 @@ logoutBtn.addEventListener("click", function () {
     document.getElementById("logged-in-view").classList.add("hidden");
     document.getElementById("register-view").classList.remove("hidden");
     document.getElementById("login-panel").classList.remove("hidden");
+    document.getElementById("posts-container").classList.add("hidden");
+    document.getElementById("my-posts-container").classList.add("hidden");
     document.querySelector(".hr-sidebar")?.classList.remove("hidden");
     document.getElementById("welcome-username").textContent = "";
 });
