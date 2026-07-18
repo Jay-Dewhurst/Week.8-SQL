@@ -2,6 +2,14 @@
 
 A full stack blogging platform built with Node.js, Express, Sequelize, and MySQL on the backend, and vanilla HTML, CSS, and JavaScript on the frontend. Users can register, log in, create and manage their own blog posts, and browse posts filtered by category.
 
+## Important Notes (Please Read)
+
+Some sections of the page are only visible after logging in. Guests will need to register an account to see the following sections:
+
+- Create a Post
+- My Posts
+- Note List
+
 ## Features
 
 - User registration, login, and logout using token based authentication (JWT)
@@ -32,6 +40,7 @@ A full stack blogging platform built with Node.js, Express, Sequelize, and MySQL
 - server.js - the application entry point
 
 ## Getting Started (Local Setup)
+
 ### Prerequisites
 
 - Node.js installed on your machine
@@ -91,8 +100,9 @@ http://localhost:3001
 
 ## Live Deployment
 
-Live URL: [add your Render URL here]
-GitHub Repository: [add your GitHub repository URL here]
+Live URL: https://week-8-sql.onrender.com/
+
+GitHub Repository: https://github.com/Jay-Dewhurst/Week.8-SQL
 
 ## Usage Guide
 
@@ -100,5 +110,5 @@ GitHub Repository: [add your GitHub repository URL here]
 2. Log in using the login form.
 3. Once logged in, use the Create a Post form to publish a new blog post, selecting a category from the dropdown.
 4. View, edit, or delete your own posts from the My Posts section.
-5. Browse all posts from every user in the Browse by Category section, and use the dropdown to filter by a specific category.
+5. Browse all posts from every user in the Browse Posts by Category section, and use the dropdown to filter by a specific category.
 6. Log out using the Logout button when finished.
