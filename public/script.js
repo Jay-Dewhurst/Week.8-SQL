@@ -81,6 +81,7 @@ function showLoggedInView(user) {
     document.querySelector(".hr-sidebar")?.classList.add("hidden");
     document.getElementById("posts-container").classList.remove("hidden");
     document.getElementById("my-posts-container").classList.remove("hidden");
+    document.getElementById("notes-container").classList.remove("hidden");
 }
 
 // CHECKING LOGIN STATUS
@@ -102,6 +103,7 @@ logoutBtn.addEventListener("click", function () {
     document.getElementById("login-panel").classList.remove("hidden");
     document.getElementById("posts-container").classList.add("hidden");
     document.getElementById("my-posts-container").classList.add("hidden");
+    document.getElementById("notes-container").classList.add("hidden");
     document.querySelector(".hr-sidebar")?.classList.remove("hidden");
     document.getElementById("welcome-username").textContent = "";
 });
@@ -344,3 +346,64 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
+
+// NOTES
+function getNotes() {
+    const notesJson = localStorage.getItem("notes");
+    return notesJson ? JSON.parse(notesJson) : [];
+}
+
+function saveNotes() {
+    localStorage.setItem("Notes", JSON.stringify(notes));
+}
+
+function renderNotes() {
+    const notesList = document.getElementById("notes-list");
+    notesList.innerHTML = "";
+
+    const notes = getNotes();
+
+    notes.forEach(function (note, index) {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <span>${note}</span>
+            <button class="delete-note-button" data-index="${index}">Delete</button>
+            `;
+        notesList.appendChild(li);
+    });
+}
+
+renderNotes();
+
+const addNoteBtn = document.getElementById("add-note-btn");
+const noteInput = document.getElementById("note-input");
+
+addNoteBtn.addEventListener("click", function () {
+    const text = noteInput.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    const notes = getNotes();
+    notes.push(text);
+    saveNotes(notes);
+
+    noteInput.value = "";
+    renderNotes();
+});
+
+const notesList = document.getElementById("notes-list");
+
+notesList.addEventListener("click", function (event) {
+    if (!event.target.classList.contains("delete-note-btn")) {
+        return;
+    }
+
+    const index = parseInt(event.target.dataset.index);
+    const notes = getNotes();
+
+    notes.splice(index, 1);
+    saveNotes(notes);
+    renderNotes();
+});
