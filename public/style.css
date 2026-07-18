@@ -1,230 +1,70 @@
+/* GLOBAL, ROOT & MISC SETTINGS */
 :root {
     --bg-bolor: #03030c;
-    --neon-blue: #00f0ff;
-    --neon-purple: #7000ff;
+    --bg-register: #0c0b18;
+    --bg-middle: #181829;
     --panel-bg: rgba(10, 10, 25, 0.75);
-    --border-glow: rgba(0, 240, 255, 0.3);
-    --radius-lg: 15px;
-    --radius-sm: 4px;
+    --t-shadow: rgba(0, 240, 255, 0.5);
+    --hr-color: #b0aeae;
+    --ph2h1-txt: #ffffff;
+    --border-neon: #00f0ff;
+    --btn-txt: #b0b0d0;
+    --links: #a0a0ff;
+    --radius-sm: 5px;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
     background-color: var(--bg-bolor);
-    color: #e0e0ff;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-#lightning-canvas {
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 999;
-}
-
-/* Misc element styling */
-hr {
-    margin: 40px;
-    border: 1px solid var(--border-glow);
-}
-
-/* Task & Note List Code */
-ul li {
-    margin: 15px 0px 10px;
-    padding: 12px 50px 12px 45px;
-    cursor: pointer;
-    position: relative;
-    list-style-type: none;
-    border: 2px solid var(--border-glow);
-    border-radius: var(--radius-lg);
-    background: var(--bg-bolor);
-    font-size: 16px;
-    transition: 0.2s;
-    user-select: none;
-}
-
-/* Set all odd List items to a different colour */
-ul li:nth-child(odd) {
-    background: var(--border-glow);
-}
-
-ul li:hover {
-    border-color: var(--neon-blue);
-    box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
-}
-
-/* Crossed State Styling */
-ul li.checked {
-    background: #222233;
-    color: #8888a0;
-    border-color: rgba(0, 240, 255, 0.1);
-}
-
-ul li.checked .editable-text {
-    text-decoration: line-through;
-}
-
-/* Check off Items */
-ul li::before {
-    content: "";
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
-    border: 2px solid var(--neon-blue);
-    border-radius: var(--radius-sm);
-    transition: background 0.2s;
-}
-
-ul li.checked::before {
-    background: var(--neon-blue);
-    box-shadow: 0px 0px 8px var(--neon-blue);
-}
-
-/* Close Button */
-.close {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 5px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: 0.2s;
-}
-
-.close:hover {
-    background-color: #f44336;
-    color: white;
-}
-
-.Task-header {
-    padding-bottom: 20px;
-    text-align: center;
-}
-
-/* Input container */
-.input-group {
+/* CONTAINERS (----)*/
+/* NAVIGATION (--) */
+.top-bar {
     display: flex;
-    align-items: stretch;
-    width: 100%;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-input[type=text] {
-    flex: 1;
-    border: 2px solid var(--border-glow);
+    flex-direction: column;
     background-color: var(--bg-bolor);
-    color: #e0e0ff;
-    border-radius: var(--radius-lg);
-    padding: 10px;
-    font-size: 16px;
-}
-
-input[type=text]:focus {
-    border: 2px solid rgba(0, 240, 255, 0.5);
-    background-color: rgba(0, 240, 255, 0.05);
-    outline: none;
-}
-
-/* Add Note Button */
-.addBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25%;
-    padding: 0px 20px;
-    background: var(--bg-bolor);
-    color: var(--neon-blue);
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border: 2px solid var(--border-glow);
-    border-radius: var(--radius-lg);
-}
-
-.addBtn:hover {
-    background-color: var(--neon-blue);
-    color: var(--bg-bolor);
-}
-
-/* Editable Content */
-/* Editable Fields */
-.editable-text {
-    display: inline-block;
-    width: 100%;
-    outline: none;
-    cursor: text;
-}
-
-.editable-text:focus {
-    background: rgba(0, 240, 255, 0.1);
-    border-radius: var(--radius-sm);
-}
-
-/* Tells user the content can be edited */
-[contenteditable="true"] {
-    cursor: text;
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    transition: background 0.2s, box-shadow 0.2s;
-    display: inline-block;
-}
-
-/* Hover effect to show editing is possible */
-[contenteditable="true"]:hover {
-    background: rgba(0, 240, 255, 0.1);
-}
-
-[contenteditable="true"]:focus {
-    outline: none;
-    background: rgba(0, 240, 255, 0.15);
-    border-radius: var(--radius-sm);
-    box-shadow: 0px 0px 5px var(--neon-blue);
-}
-
-/* Nav Code */
-.logo svg {
-    display: block;
-    position: relative;
-    top: 4px;
 }
 
 .nav-wrapper {
     display: flex;
+    align-items: center;
     justify-content: center;
-    width: 100%;
-    padding: 20px 20px 0px 20px;
-    margin: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
     z-index: 100;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 50px;
-    padding: 15px 35px;
+    padding: 40px 0;
+    gap: 60px;
 }
 
-.navbar a {
-    color: #a0a0ff;
+.navbar #live-clock {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 15px;
+    color: var(--links);
+}
+
+.navbar a,
+.navbar p {
+    color: var(--links);
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1px;
@@ -238,65 +78,27 @@ input[type=text]:focus {
     text-shadow: 0px 0px 8px var(--neon-blue);
 }
 
-/* Container & Boxes */
-/* Two Column Infastructure */
-.dashboard-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    width: 100%;
-}
-
-.column-panel {
-    flex: 1;
-    min-width: 0;
-    justify-content: flex-start !important;
-}
-
-/* Row Infastructure */
-.main-container {
-    max-width: 1200px;
-    margin: 120px auto 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.content-row {
-    display: flex;
-    gap: 30px;
-    width: 100%;
-}
-
-.content-column {
-    display: flex;
-}
-
-/* Overrides both .flex-box and .themed-panel padding, only for this element */
-#core {
-    padding: 50px 50px 30px 50px;
-}
-
-#systems {
-    text-align: center;
-}
-
+/* MAIN LAYOUT (--) */
 .flex-box {
     flex: 1;
-    padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+}
+
+.themed-panel {
+    background: none;
+    border-radius: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .flex-box h1,
 .flex-box h2 {
-    color: var(--neon-blue);
-    margin-bottom: 15px;
+    color: var(--ph2h1-txt);
     letter-spacing: 0.5px;
-    text-shadow: 0px 0px 5px rgba(0, 240, 255, 0.5);
+    text-shadow: 0px 0px 5px var(--border-neon);
 }
 
 .flex-box h1 {
@@ -306,30 +108,259 @@ input[type=text]:focus {
 
 .flex-box h2 {
     font-size: 1.5rem;
+    text-align: center;
+    margin: 10px 0;
 }
 
 .flex-box p {
     line-height: 1.6;
     color: #b0b0d0;
+    overflow-wrap: break-word;
 }
 
-.themed-panel {
-    background: var(--panel-bg);
-    border-radius: 16px;
-    border: 2px solid rgba(0, 240, 255, 0.2);
-    backdrop-filter: blur(12px);
-    box-shadow: 0px 0px 15px var(--border-glow);
-    position: relative;
-    overflow: hidden;
+.register-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .content-row {
-        flex-direction: column;
-    }
-    .navbar {
-        gap: 15px;
-        padding: 12px 20px;
-    }
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.form-container input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.form-container label {
+    color:  var(--btn-txt);
+}
+
+.form-container p {
+    margin: 0 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.login-container input,
+.login-container select {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.login-container input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.login-container label {
+    color: var(--btn-txt);
+}
+
+.login-container p {
+    margin: 0 20px;
+}
+
+.login-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.login-wpanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-shadow: 0 0 5px var(--border-neon);
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.login-wpanel p {
+    color: var(--ph2h1-txt);
+}
+
+.post-list {
+    list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--links);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 5px var(--border-neon);
+    padding: 20px 20px;
+    margin: 10px 20px;
+    gap: 10px;
+}
+
+.post-list li {
+    margin: 0 10px;
+    gap: 10px;
+}
+
+.post-list p {
+    margin-bottom: 10px;
+}
+
+.post-list .edit-post-btn,
+.post-list .delete-post-btn {
+    margin: 0;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.post-form input,
+.post-form select,
+.post-form textarea {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.post-form label {
+    color: var(--btn-txt);
+}
+
+.note-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--links);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 5px var(--border-neon);
+    padding: 20px 20px;
+    margin: 10px 20px;
+    gap: 10px;
+}
+
+.note-list input {
+    margin: 10px 0;
+    padding: 6px 10px;
+}
+
+.note-list li {
+    margin-left: 20px;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.register-column {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 400px;
+    background-color: var(--bg-register);
+}
+
+.middle-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-middle);
+    border-left: 1.5px solid var(--hr-color);
+}
+
+.right-container {
+    flex: 1;
+}
+
+.welcome-panel {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-panel {
+    margin: 0 40px 40px 40px;
+}
+
+/* ID CODE (----) */
+#live-clock {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--neon-blue);
+}
+
+/* CLASS CODE (----) */
+/* DIVIDERS (--) */
+.hr-top {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    border: 1px solid var(--hr-color);
+}
+
+.hr-sidebar {
+    margin: 40px auto 0 auto;
+    width: 95%;
+    border: 1px solid var(--hr-color);
+}
+
+.hr-register {
+    margin: 20px auto 0 auto;
+    width: 100%;
+    border: 1px solid var(--hr-color);
+}
+
+/* BUTTONS (--) */
+.logoutbtn,
+.submitbtn,
+.signupBtn {
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-neon);
+    background-color: var(--hr-color);
+    font-weight: 600;
+    color: var(--bg-bolor);
+    cursor: pointer;
+    margin: 10px 20px;
+    padding: 10px 0;
+    gap: 20px;
+    width: 150px;
+}
+
+.sm-submitBtn,
+.edit-post-btn,
+.delete-post-btn,
+.notebtn,
+.delete-note-btn {
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-neon);
+    background-color: var(--hr-color);
+    font-weight: 600;
+    color: var(--bg-bolor);
+    cursor: pointer;
+    margin: 0 6px;
+    padding: 2px 5px;
+}
+
+/* VISIBILITY STATES (--) */
+.hidden {
+    display: none;
 }

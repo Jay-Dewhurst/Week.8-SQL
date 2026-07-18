@@ -353,8 +353,8 @@ function getNotes() {
     return notesJson ? JSON.parse(notesJson) : [];
 }
 
-function saveNotes() {
-    localStorage.setItem("Notes", JSON.stringify(notes));
+function saveNotes(notes) {
+    localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function renderNotes() {
@@ -367,7 +367,7 @@ function renderNotes() {
         const li = document.createElement("li");
         li.innerHTML = `
             <span>${note}</span>
-            <button class="delete-note-button" data-index="${index}">Delete</button>
+            <button class="delete-note-btn" data-index="${index}">Delete</button>
             `;
         notesList.appendChild(li);
     });
