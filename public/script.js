@@ -78,7 +78,9 @@ function showLoggedInView(user) {
     document.getElementById("welcome-username").textContent = user.username;
 
     document.getElementById("login-panel").classList.add("hidden");
-    document.querySelector(".hr-sidebar")?.classList.add("hidden");
+    document.querySelectorAll(".hr-register").forEach(function (hr) {
+        hr.classList.add("hidden");
+    });
     document.getElementById("posts-container").classList.remove("hidden");
     document.getElementById("my-posts-container").classList.remove("hidden");
     document.getElementById("notes-container").classList.remove("hidden");
@@ -104,7 +106,9 @@ logoutBtn.addEventListener("click", function () {
     document.getElementById("posts-container").classList.add("hidden");
     document.getElementById("my-posts-container").classList.add("hidden");
     document.getElementById("notes-container").classList.add("hidden");
-    document.querySelector(".hr-sidebar")?.classList.remove("hidden");
+    document.querySelectorAll(".hr-register").forEach(function (hr) {
+        hr.classList.remove("hidden");
+    });
     document.getElementById("welcome-username").textContent = "";
 });
 
@@ -199,6 +203,7 @@ createPostForm.addEventListener("submit", async function (event) {
 
         createPostForm.reset();
         loadMyPosts();
+        loadBrowsePosts();
     } catch (error) {
         alert("Could not save post: " + error.message);
     }
@@ -257,6 +262,7 @@ myPostList.addEventListener("click", async function (event) {
             method: "DELETE",
         });
         loadMyPosts();
+        loadBrowsePosts();
     } catch (error) {
         alert("Could not delete post: " + error.message);
     }

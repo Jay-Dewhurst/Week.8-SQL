@@ -293,8 +293,13 @@ body {
 }
 
 .welcome-panel {
+    flex: none;
     text-align: center;
     padding: 20px 0;
+}
+
+.parallel-post-container {
+    flex: 1;
 }
 
 .footer-panel {
